@@ -116,9 +116,6 @@ def tween(percentage, obj=None, attrs=None, selection=True):
         # Then finally set the key
         cmds.setKeyframe(attrFull, time=currentTime, value=currentValue)
 
-
-
-
 # Again we create a class to contain functions(also called methods) that relate to each other
 # In this case they relate because they are part of the window
 # This class is called TweenerWindow, and it is based of (inherits) the python 'object'
@@ -182,10 +179,11 @@ class TweenerWindow(object):
         cmds.button(label="Close", command=self.close)
         cmds.setParent(column)
 
-    # *args will be a new concept for you
-    # It basically means I do not know how many arguments I will get, so please put them all inside this one list (tuple) called args
+    # reset button
     def reset(self, *args):
+        # update slider field
         cmds.floatSlider(self.slider, edit=True, value=0.5)
+        # update float field
         cmds.floatField(self.myTextField, edit=True, value=0.5)
     #close the window
     def close(self, *args):
@@ -201,7 +199,4 @@ class TweenerWindow(object):
 
 if __name__ == "__main__":
     window = TweenerWindow()
-    #window.buildUI()
     window.show()
-    #tween(50.0, selection=True)
-
